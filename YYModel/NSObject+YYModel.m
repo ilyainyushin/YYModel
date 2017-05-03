@@ -216,7 +216,7 @@ static force_inline NSDate *YYNSDateFromString(__unsafe_unretained NSString *str
             
             NSDateFormatter *formatter3 = [NSDateFormatter new];
             formatter3.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            formatter3.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.sZ";
+            formatter3.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SS";
             
             blocks[22] = ^(NSString *string) { return [formatter3 dateFromString:string];  };
             blocks[20] = ^(NSString *string) { return [formatter dateFromString:string];  };
