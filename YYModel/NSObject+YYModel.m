@@ -218,13 +218,19 @@ static force_inline NSDate *YYNSDateFromString(__unsafe_unretained NSString *str
             formatter3.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
             formatter3.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SS";
             
-            blocks[22] = ^(NSString *string) { return [formatter3 dateFromString:string];  };
-            blocks[20] = ^(NSString *string) { return [formatter dateFromString:string];  };
-            blocks[23] = ^(NSString *string) { return [formatter2 dateFromString:string];  };
-            blocks[24] = ^(NSString *string) { return [formatter dateFromString:string]?: [formatter2 dateFromString:string]; };
-            blocks[25] = ^(NSString *string) { return [formatter dateFromString:string];  };
-            blocks[28] = ^(NSString *string) { return [formatter2 dateFromString:string]; };
-            blocks[29] = ^(NSString *string) { return [formatter2 dateFromString:string]; };
+            NSDateFormatter *formatter4 = [NSDateFormatter new];
+            formatter4.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+            formatter4.dateFormat = @"yyyy-MM-dd'T'HH:mm.ss.SSSZ";
+            
+            blocks[21] = ^(NSString *string) { return [formatter4 dateFromString:string];};
+            blocks[22] = ^(NSString *string) { return [formatter3 dateFromString:string];};
+            blocks[20] = ^(NSString *string) { return [formatter dateFromString:string];};
+            blocks[23] = ^(NSString *string) { return [formatter2 dateFromString:string];};
+            blocks[24] = ^(NSString *string) { return [formatter dateFromString:string]?:[formatter2 dateFromString:string]; };
+            blocks[25] = ^(NSString *string) { return [formatter dateFromString:string];};
+            blocks[28] = ^(NSString *string) { return [formatter2 dateFromString:string];};
+            blocks[29] = ^(NSString *string) { return [formatter2 dateFromString:string];};
+            blocks[24] = ^(NSString* string) { return [formatter4 dateFromString:string];};
         }
         
         {
